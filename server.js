@@ -37,7 +37,7 @@ app.listen(3300, () => {
 })
 
 // // retrieve all patients
-  app.get('',(req,res)=>{
+  app.get('/patients',(req,res)=>{
      const getpatients= "SELECT*FROM PATIENTS"
      db.query(getpatients,(err,data) => {
          if(err){
@@ -50,9 +50,9 @@ app.listen(3300, () => {
  })
 
 //  retrieve providers
-app.get("",(res,req)=>{
+app.get("/providers",(res,req)=>{
   const getproviders ="SELECT first_name,last_name,provider_specialty FROM PROVIDERS"
-  db.query(getproviders,(err,data)=>{
+  db.query('/getproviders',(err,data)=>{
     if(err){
       return res.status(300).send('failed to get providers',err)
       res.status(200).send(data)
@@ -63,7 +63,7 @@ app.get("",(res,req)=>{
 )
 
 // patients by first name
-app.get("",(res,req)=>{
+app.get("/patient_names",(res,req)=>{
   const getpatients ="SELECT first_name,last_name FROM PROVIDERS"
   db.query(getpatients,(err,data)=>{
     if(err){
@@ -76,7 +76,7 @@ app.get("",(res,req)=>{
 )
 // retrive provider speciality
 
-app.get("",(res,req)=>{
+app.get("/provider_speciality",(res,req)=>{
   const getproviders ="SELECT provider_specialty FROM PROVIDERS"
   db.query(getproviders,(err,data)=>{
     if(err){
